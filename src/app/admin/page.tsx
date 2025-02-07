@@ -519,9 +519,6 @@
 import { useEffect, useState } from "react";
 import {
   FaTachometerAlt,
-  FaCar,
-  FaClipboardCheck,
-  FaCarSide,
 } from "react-icons/fa";
 import { client } from "@/sanity/lib/client";
 import {
@@ -534,15 +531,11 @@ import {
   ResponsiveContainer,
 } from "recharts";
 
-const ThemedIcon = ({ icon: Icon, className }: { icon: React.ElementType; className?: string }) => (
-  <Icon className={className || ''} />
-);
-
 export default function Dashboard() {
   const [totalCars, setTotalCars] = useState<number>(0);
   const [carsOnRent, setCarsOnRent] = useState<number>(0);
   const [availableCars, setAvailableCars] = useState<number>(0);
-  const [chartData, setChartData] = useState(
+  const [chartData,] = useState(
     [
       { month: "May", earnings: 200000, previousEarnings: 150000 },
       { month: "Jun", earnings: 250000, previousEarnings: 200000 },
