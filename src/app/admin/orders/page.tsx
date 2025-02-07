@@ -355,7 +355,7 @@ const Orders = () => {
   // Filter orders based on search term and status filter
   const filteredOrders = sortedOrders.filter(
     (order) =>
-      (order.orderId.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      (order.bookingId.toLowerCase().includes(searchTerm.toLowerCase()) ||
         order.customer.fullName.toLowerCase().includes(searchTerm.toLowerCase())) &&
       (statusFilter === "" || order.status === statusFilter)
   );
@@ -432,7 +432,7 @@ const Orders = () => {
             <tbody className="divide-y divide-gray-100">
               {filteredOrders.map((order) => (
                 <tr key={order._id} className="hover:bg-blue-50/50 transition-colors">
-                  <td className="px-4 py-2 md:px-6 md:py-4 text-sm md:text-base font-medium text-blue-900">{order.orderId}</td>
+                  <td className="px-4 py-2 md:px-6 md:py-4 text-sm md:text-base font-medium text-blue-900">{order.bookingId}</td>
                   <td className="px-4 py-2 md:px-6 md:py-4 text-sm md:text-base">{order.customer?.fullName || "Guest"}</td>
                   <td className="px-4 py-2 md:px-6 md:py-4">
                     <span

@@ -5,9 +5,9 @@ import { client } from '@/sanity/lib/client';
 
 // Define the props type
 interface EditCarPageProps {
-  params: {
+  params: Promise<{
     id: string;
-  };
+  }>;  // Wrap the params in a Promise
 }
 
 interface Car {
@@ -32,7 +32,16 @@ const EditCarPage = (props: EditCarPageProps) => {
   const router = useRouter();
 
   // Extract `id` from props.params
-  const carId = props.params.id;
+  const [carId, setCarId] = useState<string | null>(null);
+
+  // This will resolve the promise to get the `id`
+  useEffect(() => {
+    if (props.params) {
+      props.params.then((resolvedParams) => {
+        setCarId(resolvedParams.id);  // Store the resolved `id`
+      });
+    }
+  }, [props.params]);
 
   useEffect(() => {
     if (!carId) return;
