@@ -1,4 +1,4 @@
-import { createClient } from 'next-sanity';
+import { createClient } from '@sanity/client';
 
 // Access the environment variables from process.env
 export const client = createClient({
