@@ -3,6 +3,13 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { client } from '@/sanity/lib/client';
 
+// Define the props type
+interface EditCarPageProps {
+  params: {
+    id: string;
+  };
+}
+
 interface Car {
   name: string;
   price: number;
@@ -19,20 +26,13 @@ interface Car {
   description: string;
 }
 
-const EditCarPage = ({ paramsPromise }: { paramsPromise: Promise<{ id: string }> }) => {
+const EditCarPage = (props: EditCarPageProps) => {
   const [car, setCar] = useState<Car | null>(null);
   const [loading, setLoading] = useState(true);
-  const [carId, setCarId] = useState<string | null>(null);
   const router = useRouter();
 
-  useEffect(() => {
-    const resolveParams = async () => {
-      const params = await paramsPromise;
-      setCarId(params.id);
-    };
-
-    resolveParams();
-  }, [paramsPromise]);
+  // Extract `id` from props.params
+  const carId = props.params.id;
 
   useEffect(() => {
     if (!carId) return;
@@ -89,12 +89,11 @@ const EditCarPage = ({ paramsPromise }: { paramsPromise: Promise<{ id: string }>
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    if (!car || !carId) return; // Ensure carId is not null
+    if (!car || !carId) return;
 
     try {
-      // Submit the updated car details to the backend
       await client
-        .patch(carId) // Update the car using its ID
+        .patch(carId)
         .set({
           name: car.name,
           pricePerDay: car.price,
@@ -106,7 +105,7 @@ const EditCarPage = ({ paramsPromise }: { paramsPromise: Promise<{ id: string }>
           seatingCapacity: car.seatingCapacity,
           safety: car.safety,
           specialFeatures: car.specialFeatures,
-          image: car.image, // Assuming image is an array or URL
+          image: car.image,
           availability: car.availability,
           description: car.description,
         })

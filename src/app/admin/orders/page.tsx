@@ -257,7 +257,7 @@ type Order = {
   shippingAddress: string;
   status: string;
   orderDate: string;
-  orderId: string;
+  bookingId: string;
   items: { quantity: number }[]; 
 };
 
@@ -271,7 +271,7 @@ const mockOrders: Order[] = [
     shippingAddress: "123 Main St, Springfield",
     status: "pending",
     orderDate: "2025-02-05T14:48:00.000Z",
-    orderId: "ORD123",
+    bookingId: "ORD123",
     items: [
       { quantity: 2 },
     ],
@@ -285,7 +285,7 @@ const mockOrders: Order[] = [
     shippingAddress: "456 Elm St, Shelbyville",
     status: "completed",
     orderDate: "2025-02-04T11:30:00.000Z",
-    orderId: "ORD124",
+    bookingId: "ORD124",
     items: [
       { quantity: 1 },
       { quantity: 3 },
@@ -300,7 +300,7 @@ const mockOrders: Order[] = [
     shippingAddress: "789 Oak St, Capital City",
     status: "pending",
     orderDate: "2025-02-03T13:20:00.000Z",
-    orderId: "ORD125",
+    bookingId: "ORD125",
     items: [
       { quantity: 1 },
     ],
@@ -314,7 +314,7 @@ const mockOrders: Order[] = [
     shippingAddress: "101 Pine St, Rivertown",
     status: "completed",
     orderDate: "2025-02-02T12:10:00.000Z",
-    orderId: "ORD126",
+    bookingId: "ORD126",
     items: [
       { quantity: 5 },
     ],
@@ -328,7 +328,7 @@ const mockOrders: Order[] = [
     shippingAddress: "202 Birch St, Hill Valley",
     status: "pending",
     orderDate: "2025-02-01T09:05:00.000Z",
-    orderId: "ORD127",
+    bookingId: "ORD127",
     items: [
       { quantity: 2 },
     ],
@@ -365,7 +365,7 @@ const Orders = () => {
       {/* Header Section */}
       <div className="mb-8">
         <h1 className="text-4xl font-bold text-white mb-2 pt-14">
-          Order Management
+          Bookings Management
         </h1>
         <p className="text-sm md:text-base text-gray-600">Manage and track all customer orders</p>
       </div>
@@ -415,7 +415,7 @@ const Orders = () => {
       {loading ? (
         <div className="flex flex-col items-center justify-center h-64 md:h-96 rounded-xl md:rounded-2xl bg-white/50">
           <FaSpinner className="animate-spin text-blue-500 mb-3 w-6 h-6 md:w-8 md:h-8" />
-          <p className="text-sm md:text-base text-gray-600 font-medium">Loading Orders...</p>
+          <p className="text-sm md:text-base text-gray-600 font-medium">Loading Bookings...</p>
         </div>
       ) : (
         <div className="bg-white/90 rounded-xl md:rounded-2xl shadow-lg overflow-x-auto border border-gray-100">
@@ -466,7 +466,7 @@ const Orders = () => {
                           d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"
                         />
                       </svg>
-                      <p className="text-lg md:text-xl font-medium">No orders found</p>
+                      <p className="text-lg md:text-xl font-medium">No Bookings found</p>
                       <p className="mt-1 text-xs md:text-sm">Try adjusting your search criteria</p>
                     </div>
                   </td>

@@ -1,20 +1,21 @@
 import type { Metadata } from "next";
-import localFont from "next/font/local";
+// import localFont from "next/font/google";
 import "./globals.css";
 import ConditionalSideBar from "@/components/ConditionalSideBar";
+import { Geist, Geist_Mono } from 'next/font/google'
 
 
-// Correct paths to font files in the public/fonts/ directory
-const geistSans = localFont({
-  src: "/fonts/GeistVF.woff",  // Correct font path
-  variable: "--font-geist-sans",
-  weight: "100 900",
+// Use your font
+const geist = Geist({
+  weight: '400', // adjust as needed
+  style: 'normal',
+  subsets: ['latin'],
 });
 
-const geistMono = localFont({
-  src: "/fonts/GeistMonoVF.woff",  // Correct font path
-  variable: "--font-geist-mono",
-  weight: "100 900",
+const geistMono = Geist_Mono({
+  weight: '400', // adjust as needed
+  style: 'normal',
+  subsets: ['latin'],
 });
 
 export const metadata: Metadata = {
@@ -29,7 +30,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+      <body className={`${geist.style} ${geistMono.style} antialiased`}>
         {children}
         <ConditionalSideBar />
       </body>

@@ -2,14 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Font Face for GeistMono */
-@font-face {
-  font-family: 'GeistMono';
-  src: url('/fonts/GeistMonoVF.woff2') format('woff2'),
-       url('/fonts/GeistMonoVF.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-}
 
 /* Light Mode */
 :root {
