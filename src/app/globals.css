@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Font Face for GeistMono */
+@font-face {
+  font-family: 'GeistMono';
+  src: url('/fonts/GeistMonoVF.woff2') format('woff2'),
+       url('/fonts/GeistMonoVF.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+/* Light Mode */
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+  --font-family: 'GeistMono', Arial, Helvetica, sans-serif;
+}
+
+/* Dark Mode */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+/* Apply the font */
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-family);
+}
+
+/* Tailwind Utility Classes */
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
