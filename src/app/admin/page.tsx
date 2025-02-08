@@ -517,10 +517,8 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import {
-  FaTachometerAlt,
-} from "react-icons/fa";
-import { client } from "@/sanity/lib/client";
+import { FaTachometerAlt } from "react-icons/fa";
+import { client } from "@/sanity/lib/client"; // Assuming client is exported from here
 import {
   AreaChart,
   Area,
@@ -535,7 +533,7 @@ export default function Dashboard() {
   const [totalCars, setTotalCars] = useState<number>(0);
   const [carsOnRent, setCarsOnRent] = useState<number>(0);
   const [availableCars, setAvailableCars] = useState<number>(0);
-  const [chartData,] = useState(
+  const [chartData] = useState(
     [
       { month: "May", earnings: 200000, previousEarnings: 150000 },
       { month: "Jun", earnings: 250000, previousEarnings: 200000 },
@@ -572,7 +570,9 @@ export default function Dashboard() {
       <div className="w-64 bg-gray-800 p-6 min-h-screen">
         <h2 className="text-2xl font-bold mb-6">ADMIN</h2>
         <ul className="space-y-4">
-          <li className="flex items-center space-x-3 text-lg font-medium text-blue-400"><FaTachometerAlt /> <span>Dashboard</span></li>
+          <li className="flex items-center space-x-3 text-lg font-medium text-blue-400">
+            <FaTachometerAlt /> <span>Dashboard</span>
+          </li>
         </ul>
       </div>
 
